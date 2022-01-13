@@ -1,8 +1,4 @@
 // Assignment code here
-// var criteriaLength
-// var passwordCharacterType
-// var passwordNumericType
-// var passwordSpecialCharacter
 
 function createNewPassword() {
   var createNewPassword = "";
@@ -31,8 +27,44 @@ function createNewPassword() {
   }
 
   return createNewPassword;
-  
+}  
 
+function retrievePasswordLength(valueEntered) {
+  var criteriaLength = "Select a password length between 8-128 characters.";
+  
+  if (valueEntered) {
+    criteriaLength = valueEntered + " Is not between 8-128." + criteriaLength;
+  }
+  // add null if statement 
+  // when null if statement add remove const defaultLeng
+  const defaultLength = 8;
+
+  var length = Number(prompt(criteriaLength, defaultLength));
+
+  if (isNaN(length)) {
+    return defaultLength;
+  } else if (length < 8 || length > 128) {
+    return retrievePasswordLength(length.toString());
+  } else {
+    return length;
+  }
+}
+
+function retrieveCharacterType () {
+  var selectedPasswordCharacters = {
+    includeLowercase: confirm("Include lowercase characters?"),
+    includeUppercase: confirm("Include uppercase characters?"),
+    includeNumeric: confirm("Include numeric characters?"),
+    includeSpecial: confirm("Include special characters?")
+  };
+  // change selectedOptionsDictionary to selectedPasswordCharacters
+ if (!selectedOptionsDictionary.includeLowercase && !selectedOptionsDictionary.includeUppercase && !selectedOptionsDictionary.includeNumeric && !selectedOptionsDictionary.includeSpecial) {
+   alert ("You have not selected any character options. Please select at least one.");
+   return retrieveCharacterType();
+ } else {
+    return selectedPasswordCharacters;
+ }
+}
 
 
 // When button is clicked prompted to generate password
@@ -43,37 +75,16 @@ function createNewPassword() {
 
 
 // Get references to the #generate element
-// var generateBtn = document.querySelector("#generate");
+var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-// function writePassword() {
+function writePassword() {
 
-//   criteriaLength = prompt("Select a length for your new password between 8-128 characters.");
-//   if (criteriaLength >=8 && criteriaLength <=128) {
-//     alert("You have selected a password of " + criteriaLength + " characters.");
-//     localStorage.setItem("length", criteriaLength);
-//   } else {
-//     alert("Please enter a value between 8-128!");
-//   }
-
-//   passwordCharacterType = prompt("Select whether you want 'Lowercase', 'Uppercase', or 'Both' in your password. Enter 'Lowercase', 'Uppercase', or 'Both'. ");
-
-//   passwordCharacterType = passwordCharacterType.toLowerCase();
-
-//   if (passwordCharacterType === "lowercase") {
-//     passwordCharacterType = 
-//   }
-
-//   if (passwordCharacterType === "uppercase") {
-
-//   }
-
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-  
-//   passwordText.value = password;
-  
-// }
+ var password = createNewPassword();
+ var passwordText = document.querySelector("#password");
+ 
+ passwordText.value = password
+}
 
 
 // Add event listener to generate button
