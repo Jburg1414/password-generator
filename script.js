@@ -19,7 +19,7 @@ function createNewPassword() {
   }
 
   if (usedCharacterType.includeSpecial) {
-    pickedOtherCharacters += " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+    pickedOtherCharacters += "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
   }
 
   for (var i = 0; i < passwordLength; i ++) {
