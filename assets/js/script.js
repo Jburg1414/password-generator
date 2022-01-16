@@ -52,7 +52,7 @@ function retrievePasswordLength(valueEntered) {
   const defaultLength = 8;
 
   // password length 
-  var length = Number(prompt(criteriaLength));
+  var length = Number(prompt(criteriaLength, defaultLength));
 
 
   // if var length is not a number return default length, else if the length is less than 8 or greater than 128 prompt, else return the selected password length
