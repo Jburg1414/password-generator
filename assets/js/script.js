@@ -5,35 +5,37 @@ function createNewPassword() {
   var passwordLength = retrievePasswordLength();
   var usedCharacterType = retrieveCharacterType();
   var pickedOtherCharacters = "";
-
+  
   if (usedCharacterType.includeLowercase) {
     pickedOtherCharacters += "abcdefghijklmnopqrstuvwxyz";
   }
-
+  
   if (usedCharacterType.includeUppercase) {
     pickedOtherCharacters += "ABCDEFGHIJLKMNOPQRSTUVWXYZ";
   }
-
+  
   if (usedCharacterType.includeNumeric) {
     pickedOtherCharacters += "0123456789";
   }
-
+  
   if (usedCharacterType.includeSpecial) {
     pickedOtherCharacters += "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
   }
-
+  
   for (var i = 0; i < passwordLength; i ++) {
     createNewPassword += pickedOtherCharacters.charAt(Math.floor(Math.random() * pickedOtherCharacters.length));
   }
-
+  
   return createNewPassword;
 }  
 
+// Prompt criteria asks for length of password 8-128 characters
 function retrievePasswordLength(valueEntered) {
   var criteriaLength = "Select a password length between 8-128 characters.";
   
+  // 
   if (valueEntered) {
-    criteriaLength = valueEntered + " Is not between 8-128." + criteriaLength;
+    criteriaLength = valueEntered + " is not between 8-128. " + criteriaLength;
   }
   // add null if statement 
   // when null if statement add remove const defaultLeng
@@ -68,7 +70,6 @@ function retrieveCharacterType () {
 
 
 // When button is clicked prompted to generate password
-// Prompt criteria asks for length of password 8-128 characters
 // Prompt asks for uppercase, lowercase, numeric, and special
 // validated and one character type selected
 // All prompts answered then password is generated and displayed in alert
